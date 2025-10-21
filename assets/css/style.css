@@ -141,6 +141,43 @@ button:hover {
   margin-bottom: 0.5rem;
 }
 
+
+/* Stats block */
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+/* Line indicator */
+.line {
+  height: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+/* Color indicators */
+.red {
+  background-color: #e74c3c;
+}
+
+.green {
+  background-color: #2ecc71;
+}
+
+.yellow {
+  background-color: #f1c40f;
+}
+
+/* Description text */
+.desc {
+  font-size: 14px;
+  color: #333;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
 .nav-container {
   display: flex;
   flex-direction: column;

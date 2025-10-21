@@ -15,26 +15,30 @@ function getIMT() {
 
   let tb = document.getElementById("tinggiBadan").value;
   let bb = document.getElementById("beratBadan").value;
-  if (!tb || !bb || isNaN(tb) || isNaN(bb)) return alert("numbers only");
+  if (!tb || !bb || isNaN(tb) || isNaN(bb)){
+    document.getElementById("warn").textContent = "Enter a valid number!";
+    setTimeout(() => (document.getElementById("warn").textContent = ""), 3000);
+    return;
+  } 
   bb *= bb;
   let imt = Math.floor((bb / tb) * 10) / 10;
   // VALIDATIONS
 
   if (imt < 18.5) {
-    title.textContent = "Kurus";
+    title.textContent = `Kurus (${imt})`;
     judgementLine.classList.add("red");
     desc.textContent = "Utamakan hidup sehat dan perhatikan konsumsi harian";
   } else if (imt <= 24.9) {
-    title.textContent = "Berat badan Ideal";
+    title.textContent = `Berat badan Ideal (${imt})`;
     judgementLine.classList.add("green");
     desc.textContent =
       "Pastikan asupan kalori sesuai dengan kebutuhan kalori harian & konsumsi makanan sehat";
   } else if (imt <= 29.9) {
-    title.textContent = "Overweight";
+    title.textContent = `Overweight (${imt})`;
     judgementLine.classList.add("yellow");
     desc.textContent = "Utamakan hidup sehat dan perhatikan konsumsi harian";
   } else {
-    title.textContent = "Obesitas";
+    title.textContent = `Obesitas (${imt})`;
     judgementLine.classList.add("red");
     desc.textContent = "Utamakan hidup sehat dan perhatikan konsumsi harian";
   }
@@ -66,9 +70,9 @@ function getDate() {
 
   // VALIDATOR
   if (dateObj < firstOfYear || dateObj > now) {
-    alert(
-      `Tanggal harus antara ${firstOfYear.toLocaleDateString("id-ID")} dan ${now.toLocaleDateString("id-ID")}.`
-    );
+    document.getElementById("warn").textContent = `Tanggal harus antara ${firstOfYear.toLocaleDateString("id-ID")} dan ${now.toLocaleDateString("id-ID")}.`;
+    setTimeout(() => (document.getElementById("warn").textContent = ""), 3000);
+     
     return;
   }
 
@@ -108,7 +112,12 @@ function getAMB() {
   const bb = document.getElementById("beratBadan").value;
   const umur = document.getElementById("umur").value;
   // VALIDATOR
-  if(!tb || !bb || !umur || isNaN(tb) || isNaN(bb) || isNaN(umur)) return alert('Numbers only')
+  console.log(typeof tb)
+  if(!tb || !bb || !umur || isNaN(tb) || isNaN(bb) || isNaN(umur)){
+    document.getElementById("warn").textContent = "Enter a valid number!";
+    setTimeout(() => (document.getElementById("warn").textContent = ""), 3000);
+    return;
+  } 
 
   let amb = 0;
   switch (gender) {
