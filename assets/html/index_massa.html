@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SehatPlus Clinic</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div id="nav" class="navbar">
+        <a href="../../index.html">SehatPlus Clinic</a>
+        <nav>
+            <a href="angka_metabolisme.html">Hitung AMB</a>
+            <a href="index_massa.html">Hitung IMT</a>
+            <a href="perkiraan_lahiran.html">Hitung HPL</a>
+        </nav>
+    </div>
+    <div class="container">
+        <h1>Hitung Indeks Massa Badan</h1>
+        <input placeholder="Tinggi Badan" type="text" id="tinggiBadan">
+        <input placeholder="Berat Badan" type="text" id="beratBadan">
+        <button id="submit" onclick="getIMT()">Submit</button>
+        <div id="result">
+
+        </div>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SehatPlus Clinic</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div id="nav" class="navbar">
+        <a href="../../index.html">SehatPlus Clinic</a>
+        <nav>
+            <a href="angka_metabolisme.html">Hitung AMB</a>
+            <a href="index_massa.html">Hitung IMT</a>
+            <a href="perkiraan_lahiran.html">Hitung HPL</a>
+        </nav>
+    </div>
+    <div class="container">
+        <h1>Menghitung Angka Metabolisme Basal</h1>
+        <div class="gender">
+            <div class="gender__item">
+                <label for="laki">Laki-laki</label>
+                <input type="radio" id="laki" name="chooseGender" value="laki">
+            </div>
+            <div class="gender__item">
+                <label for="perempuan">Perempuan</label>
+                <input type="radio" id="perempuan" name="chooseGender" value="perempuan">
+            </div>
+        </div>
+
+        <input type="text" id="tinggiBadan" placeholder="Tinggi (Cm)">
+        <input type="text" id="beratBadan" placeholder="Berat (Kg)">
+        <input type="text" id="umur" placeholder="Umur">
+        <button onclick="getAMB()">Submit</button>
+
+        <div id="result">
+        </div>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
