@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SehatPlus Clinic</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/awesomefonts/css/all.css">
 </head>
 
 <body>
@@ -18,26 +19,41 @@
         </nav>
     </div>
     <div class="container">
-        <h1>Menghitung Angka Metabolisme Basal</h1>
-        <p id="warn"></p>
-        <div class="gender">
-            <div class="gender__item">
-                <label for="laki">Laki-laki</label>
-                <input type="radio" id="laki" name="chooseGender" value="laki">
+        <div class="content-card">
+            <h1>Menghitung Angka Metabolisme Basal</h1>
+            <p id="warn"></p>
+            <div class="gender">
+                <div class="gender__item">
+                    <input type="radio" id="laki" name="chooseGender" value="laki">
+                    <label for="laki"><i class="fas fa-person"></i></label>
+                </div>
+                <div class="gender__item">
+                    <input type="radio" id="perempuan" name="chooseGender" value="perempuan">
+                    <label for="perempuan"><i class="fas fa-person-dress"></i></label>
+                </div>
             </div>
-            <div class="gender__item">
-                <label for="perempuan">Perempuan</label>
-                <input type="radio" id="perempuan" name="chooseGender" value="perempuan">
+            <label for="tinggiBadan">Tinggi Badan (Cm)</label>
+            <input type="text" id="tinggiBadan" placeholder="Tinggi (Cm)">
+            <label for="beratBadan">Berat Badan (Kg)</label>
+            <input type="text" id="beratBadan" placeholder="Berat (Kg)">
+            <label for="umur">Umur (Tahun)</label>
+            <input type="text" id="umur" placeholder="Umur">
+            <button onclick="getAMB()">Submit</button>
+
+            <div id="result">
             </div>
         </div>
-
-        <input type="text" id="tinggiBadan" placeholder="Tinggi (Cm)">
-        <input type="text" id="beratBadan" placeholder="Berat (Kg)">
-        <input type="text" id="umur" placeholder="Umur">
-        <button onclick="getAMB()">Submit</button>
-
-        <div id="result">
+        <div class="content-card content-description">
+            <h2>Angka Metabolisme Basal</h2>
+            <p>Digunakan untuk menghitung kebutuhan energi dasar tubuh (kalori minimal) yang dibutuhkan seseorang dalam
+                kondisi istirahat total.</p>
+            <p class="how-to">Cara menghitung angka metabolisme : <br>
+                <strong>Untuk laki-laki : </strong>(10 x Berat Badan) + (6.25 x Tinggi Badan) - (5 x Umur) + 5
+                <br>
+                <strong>Untuk Perempuan : </strong>(10 x Berat Badan) + (6.25 x Tinggi Badan) - (5 x Umur) - 161
+            </p>
         </div>
+
     </div>
     <script src="../js/script.js"></script>
 </body>

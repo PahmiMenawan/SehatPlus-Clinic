@@ -3,6 +3,7 @@ function getIMT() {
   // ELEMENTS //
   clear();
   const result = document.getElementById("result");
+  const counter = document.getElementById("counter");
   const title = document.createElement("h2");
   const stat = document.createElement("div");
   stat.classList.add("stats");
@@ -15,14 +16,20 @@ function getIMT() {
 
   let tb = document.getElementById("tinggiBadan").value;
   let bb = document.getElementById("beratBadan").value;
-  if (!tb || !bb || isNaN(tb) || isNaN(bb)){
+  // VALIDATIONS
+  if (!tb || !bb || isNaN(tb) || isNaN(bb)) {
     document.getElementById("warn").textContent = "Enter a valid number!";
     setTimeout(() => (document.getElementById("warn").textContent = ""), 3000);
+      window.location.href = "#";
     return;
-  } 
-  bb *= bb;
+  }
+  console.log(tb);
+  tb /= 100;
+  console.log(tb);
+  tb *= tb;
+  console.log(tb);
+
   let imt = Math.floor((bb / tb) * 10) / 10;
-  // VALIDATIONS
 
   if (imt < 18.5) {
     title.textContent = `Kurus (${imt})`;
@@ -40,11 +47,21 @@ function getIMT() {
   } else {
     title.textContent = `Obesitas (${imt})`;
     judgementLine.classList.add("red");
-    desc.textContent = "Utamakan hidup sehat dan perhatikan konsumsi harian";
+    desc.textContent = "Utamakan makan makanan sehat dan perbanyak olahraga";
   }
-  tinggi.textContent =`Tinggi badan ${document.getElementById("tinggiBadan").value}cm` ;
-  berat.textContent = `Berat Badan ${document.getElementById("beratBadan").value}kg`;
+  tinggi.textContent = `Tinggi badan ${
+    document.getElementById("tinggiBadan").value
+  }cm`;
+  berat.textContent = `Berat Badan ${
+    document.getElementById("beratBadan").value
+  }kg`;
 
+  counter.classList.add('counter')
+  counter.textContent = `Hasil perhitungan mu : \n
+  ${document.getElementById("beratBadan").value} / ${
+    document.getElementById("tinggiBadan").value / 100
+  }² = ${imt}`;
+  window.location.href = "#result";
   result.appendChild(title);
   result.appendChild(stat);
   stat.appendChild(tinggi);
@@ -69,10 +86,15 @@ function getDate() {
   const firstOfYear = new Date(now.getFullYear(), 0, 1);
 
   // VALIDATOR
-  if (dateObj < firstOfYear || dateObj > now) {
-    document.getElementById("warn").textContent = `Tanggal harus antara ${firstOfYear.toLocaleDateString("id-ID")} dan ${now.toLocaleDateString("id-ID")}.`;
+  if (dateObj < firstOfYear || dateObj > now || isNaN(dateObj)) {
+    document.getElementById(
+      "warn"
+    ).textContent = `Tanggal harus antara ${firstOfYear.toLocaleDateString(
+      "id-ID"
+    )} dan ${now.toLocaleDateString("id-ID")}.`;
     setTimeout(() => (document.getElementById("warn").textContent = ""), 3000);
-     
+      window.location.href = "#";
+
     return;
   }
 
@@ -86,21 +108,28 @@ function getDate() {
     month: "long",
     day: "numeric",
   });
-
+  resetDate();
   const hpht = new Date(input);
   const today = new Date();
   const diffMs = today - hpht;
   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
   const weeks = Math.floor(diffDays / 7);
   const days = diffDays % 7;
-
   title.textContent = "Selamat Bunda!";
   age.textContent = `Usia kehamilan saat ini ${weeks} minggu ${days} hari`;
   predict.textContent = `Dengan perkiraan lahir pada ${formattedDate}`;
-
+  window.location.href = "#result";
   result.appendChild(title);
   result.appendChild(age);
   result.appendChild(predict);
+}
+
+function resetDate() {
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2, "0");
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
+  const yyyy = today.getFullYear();
+  document.getElementById("dateTime").value = `${yyyy}-${mm}-${dd}`; // for type="date"
 }
 
 // AMB
@@ -111,13 +140,15 @@ function getAMB() {
   const tb = document.getElementById("tinggiBadan").value;
   const bb = document.getElementById("beratBadan").value;
   const umur = document.getElementById("umur").value;
+
   // VALIDATOR
-  console.log(typeof tb)
-  if(!tb || !bb || !umur || isNaN(tb) || isNaN(bb) || isNaN(umur)){
+  console.log(typeof tb);
+  if (!tb || !bb || !umur || isNaN(tb) || isNaN(bb) || isNaN(umur)) {
     document.getElementById("warn").textContent = "Enter a valid number!";
     setTimeout(() => (document.getElementById("warn").textContent = ""), 3000);
+    window.location.href = "#";
     return;
-  } 
+  }
 
   let amb = 0;
   switch (gender) {
@@ -128,17 +159,25 @@ function getAMB() {
       amb = 10 * bb + 6.25 * tb - 5 * umur - 161;
       break;
     default:
-      alert("GENDER GA VALID");
+      document.getElementById("warn").textContent = "Enter a valid gender!";
+      setTimeout(
+        () => (document.getElementById("warn").textContent = ""),
+        3000
+      );
+      window.location.href = "#";
       return;
   }
   clear();
+  window.location.href = "#result";
   const result = document.getElementById("result");
-  const desc = document.createElement('p');
-  desc.textContent=`Kamu membutuhkan ${amb} kkal/hari`
-  result.appendChild(desc)
+  const desc = document.createElement("p");
+  desc.textContent = `Kamu membutuhkan ${amb} kkal/hari`;
+  result.appendChild(desc);
 }
 
 function clear() {
   const result = document.getElementById("result");
   result.innerHTML = "";
+  counter.innerHTML = "";
+  counter.classList.remove('counter')
 }

@@ -18,13 +18,26 @@
         </nav>
     </div>
     <div class="container">
-        <h1>Hitung Indeks Massa Badan</h1>
-        <p id="warn"></p>
-        <input placeholder="Tinggi Badan" type="text" id="tinggiBadan">
-        <input placeholder="Berat Badan" type="text" id="beratBadan">
-        <button id="submit" onclick="getIMT()">Submit</button>
-        <div id="result">
-
+        <div class="content-card">
+            <h1>Hitung Indeks Massa Tubuh</h1>
+            <p id="warn"></p>
+            <label for="tinggiBadan">Tinggi Badan (Cm)</label>
+            <input placeholder="Tinggi Badan (cm)" type="text" id="tinggiBadan">
+            <label for="beratBadan">Berat Badan (Kg)</label>
+            <input placeholder="Berat Badan (kg)" type="text" id="beratBadan">
+            <button id="submit" onclick="getIMT()">Submit</button>
+            <div id="result">
+            </div>
+        </div>
+        <div class="content-card content-description">
+            <h2>Indeks Massa Tubuh</h2>
+            <p>Indeks Massa Tubuh (IMT) adalah cara cepat untuk mengetahui apakah berat badanmu ideal berdasarkan tinggi
+                badan. Cocok untuk cek status gizi secara umum.
+            </p>
+            <p class="how-to">Cara Menghitung IMT : <br>
+                Berat badan (kg) / Tinggi badan (m)<sup>2</sup>
+            </p>
+            <p id="counter"></p>
         </div>
     </div>
     <script src="../js/script.js"></script>
