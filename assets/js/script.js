@@ -17,10 +17,11 @@ function getIMT() {
   let tb = document.getElementById("tinggiBadan").value;
   let bb = document.getElementById("beratBadan").value;
   // VALIDATIONS
-  if (!tb || !bb || isNaN(tb) || isNaN(bb)) {
+  if (!tb || !bb || isNaN(tb) || isNaN(bb) || tb < 1 || bb < 1) {
     document.getElementById("warn").textContent = "Enter a valid number!";
     setTimeout(() => (document.getElementById("warn").textContent = ""), 3000);
-      window.location.href = "#";
+    counter.innerHTML = ` <p>Berat badan (kg) / Tinggi badan (m)<sup>2</sup>`;
+    window.location.href = "#";
     return;
   }
   console.log(tb);
@@ -56,7 +57,7 @@ function getIMT() {
     document.getElementById("beratBadan").value
   }kg`;
 
-  counter.classList.add('counter')
+  counter.classList.add("counter");
   counter.textContent = `Hasil perhitungan mu : \n
   ${document.getElementById("beratBadan").value} / ${
     document.getElementById("tinggiBadan").value / 100
@@ -93,7 +94,7 @@ function getDate() {
       "id-ID"
     )} dan ${now.toLocaleDateString("id-ID")}.`;
     setTimeout(() => (document.getElementById("warn").textContent = ""), 3000);
-      window.location.href = "#";
+    window.location.href = "#";
 
     return;
   }
@@ -118,6 +119,9 @@ function getDate() {
   title.textContent = "Selamat Bunda!";
   age.textContent = `Usia kehamilan saat ini ${weeks} minggu ${days} hari`;
   predict.textContent = `Dengan perkiraan lahir pada ${formattedDate}`;
+  counter.classList.add("counter");
+  counter.textContent = `Hasil perhitungan : \n
+  ${input} + 7 Hari - 3 Bulan + 1 Tahun = ${formattedDate}`;
   window.location.href = "#result";
   result.appendChild(title);
   result.appendChild(age);
@@ -129,7 +133,7 @@ function resetDate() {
   const dd = String(today.getDate()).padStart(2, "0");
   const mm = String(today.getMonth() + 1).padStart(2, "0");
   const yyyy = today.getFullYear();
-  document.getElementById("dateTime").value = `${yyyy}-${mm}-${dd}`; // for type="date"
+  document.getElementById("dateTime").value = `${yyyy}-${mm}-${dd}`;
 }
 
 // AMB
@@ -143,8 +147,15 @@ function getAMB() {
 
   // VALIDATOR
   console.log(typeof tb);
-  if (!tb || !bb || !umur || isNaN(tb) || isNaN(bb) || isNaN(umur)) {
+  if (!tb || !bb || !umur || isNaN(tb) || isNaN(bb) || isNaN(umur) || tb < 1 || bb < 1 || umur < 1) {
     document.getElementById("warn").textContent = "Enter a valid number!";
+    counter.innerHTML = `<strong>Untuk laki-laki : </strong>(10 x Berat Badan) + (6.25 x Tinggi Badan) - (5 x Umur) + 5
+                <br>
+                <strong>Untuk Perempuan : </strong>(10 x Berat Badan) + (6.25 x Tinggi Badan) - (5 x Umur) - 161
+            </p>
+        </div>`;
+    counter.classList.remove("counter");
+
     setTimeout(() => (document.getElementById("warn").textContent = ""), 3000);
     window.location.href = "#";
     return;
@@ -154,9 +165,11 @@ function getAMB() {
   switch (gender) {
     case "laki":
       amb = 10 * bb + 6.25 * tb - 5 * umur + 5;
+      counter.innerHTML = `Hasil Perhitungan (laki-laki) : <br>(10 x ${bb}) + (6.25 x ${tb}) - (5 x ${umur}) + 5 = ${amb}`;
       break;
     case "perempuan":
       amb = 10 * bb + 6.25 * tb - 5 * umur - 161;
+      counter.innerHTML = `Hasil Perhitungan (perempuan) : <br>(10 x ${bb}) + (6.25 x ${tb}) - (5 x ${umur}) - 161 = ${amb}`;
       break;
     default:
       document.getElementById("warn").textContent = "Enter a valid gender!";
@@ -168,6 +181,7 @@ function getAMB() {
       return;
   }
   clear();
+  counter.classList.add("counter");
   window.location.href = "#result";
   const result = document.getElementById("result");
   const desc = document.createElement("p");
@@ -178,6 +192,5 @@ function getAMB() {
 function clear() {
   const result = document.getElementById("result");
   result.innerHTML = "";
-  counter.innerHTML = "";
-  counter.classList.remove('counter')
+  counter.classList.remove("counter");
 }

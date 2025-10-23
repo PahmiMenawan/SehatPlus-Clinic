@@ -25,19 +25,34 @@
             <div class="gender">
                 <div class="gender__item">
                     <input type="radio" id="laki" name="chooseGender" value="laki">
-                    <label for="laki"><i class="fas fa-person"></i></label>
+                    <label for="laki"><i class="fas fa-person"></i></label><br>
+                    <label for="laki">Laki laki</label>
                 </div>
                 <div class="gender__item">
                     <input type="radio" id="perempuan" name="chooseGender" value="perempuan">
                     <label for="perempuan"><i class="fas fa-person-dress"></i></label>
+                    <br>
+                    <label for="laki">Perempuan</label>
                 </div>
             </div>
+            
             <label for="tinggiBadan">Tinggi Badan (Cm)</label>
-            <input type="text" id="tinggiBadan" placeholder="Tinggi (Cm)">
+            <div class="input-group">
+                <input type="number" min="1" id="tinggiBadan" placeholder="Tinggi (Cm)">
+                <span class="unit">cm</span>
+            </div>
+            
             <label for="beratBadan">Berat Badan (Kg)</label>
-            <input type="text" id="beratBadan" placeholder="Berat (Kg)">
+            <div class="input-group">
+                <input type="number" min="1" id="beratBadan" placeholder="Berat (Kg)">
+                <span class="unit">kg</span>
+            </div>
+            
             <label for="umur">Umur (Tahun)</label>
-            <input type="text" id="umur" placeholder="Umur">
+            <div class="input-group">
+                <input type="number" min="1" id="umur" placeholder="Umur">
+                <span class="unit">tahun</span>
+            </div>
             <button onclick="getAMB()">Submit</button>
 
             <div id="result">
@@ -47,7 +62,15 @@
             <h2>Angka Metabolisme Basal</h2>
             <p>Digunakan untuk menghitung kebutuhan energi dasar tubuh (kalori minimal) yang dibutuhkan seseorang dalam
                 kondisi istirahat total.</p>
-            <p class="how-to">Cara menghitung angka metabolisme : <br>
+            <br>
+            <h2>Apa itu Angka Metabolisme Basal?</h2>
+            <p>Angka Metabolisme Basal (AMB) atau Basal Metabolic Rate (BMR) adalah jumlah kalori minimum yang
+                dibutuhkan tubuh untuk menjalankan fungsi vital seperti bernapas, mengalirkan darah, dan menjaga suhu
+                tubuh saat dalam kondisi istirahat total.
+            </p>
+            <br>
+            <h2>Cara menghitung angka metabolisme :</h2>
+            <p id="counter">
                 <strong>Untuk laki-laki : </strong>(10 x Berat Badan) + (6.25 x Tinggi Badan) - (5 x Umur) + 5
                 <br>
                 <strong>Untuk Perempuan : </strong>(10 x Berat Badan) + (6.25 x Tinggi Badan) - (5 x Umur) - 161

@@ -18,22 +18,23 @@
         </nav>
     </div>
     <div class="container">
-        <div class="content-card content-description">
+        <div class="content-card">
             <h1>Hitung Hari Perkiraan Lahir</h1>
             <p id="warn"></p>
             <label for="dateTime">Hari pertama haid terakhir</label>
-            <input type="date" name="" id="dateTime">
+            <input type="date" name="" id="dateTime" lang="id-ID">
             <button onclick="getDate()">Get Date</button>
             <div id="result">
             </div>
         </div>
-        <div class="content-card">
-            <h1>Hari Perkiraan Lahir</h1>
+        <div class="content-card  content-description">
+            <h2>Hari Perkiraan Lahir</h2>
             <p>Hari Perkiraan Lahir (HPL) adalah estimasi tanggal kelahiran bayi berdasarkan hari pertama haid terakhir
                 atau hasil USG. HPL membantu memantau kehamilan dan merencanakan persalinan.
             </p>
-            <p class="how-to">
-                Cara Menghitung HPL : <br>
+            <br>
+            <h2>Cara Menghitung HPL : </h2>
+            <p id="counter">
                 Hari pertama haid terakhir + 7 hari - 3 bulan + 1 tahun
             </p>
         </div>
